@@ -2277,6 +2277,8 @@ static int link_path_walk(const char *name, struct nameidata *nd)
 		if (name[0] == '.') switch (hashlen_len(hash_len)) {
 			case 2:
 				if (name[1] == '.') {
+					if (unlikely(current->deny_path_traversal))
+						return -EPERM;
 					type = LAST_DOTDOT;
 					nd->state |= ND_JUMPED;
 				}
