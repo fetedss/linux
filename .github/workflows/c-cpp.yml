@@ -1,0 +1,28 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: configure
+      run: ./configure
+    - name: make
+      run: make
+    - name: make check
+      run: make check
+    - name: make distcheck
+      run: make distcheck
+            - nom : Construire avec Gradle
+  # Vous pouvez épingler le commit exact ou la version.
+  # utilise : gradle/actions@aff52e5be96935327d77c5529075184377dc4371
+  utilise : gradle/actions@v3.0.0-rc.2
+          
